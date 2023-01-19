@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SMS OTP</title>
+        <style>
+            form{
+                align-content: center;
+            }
+            input,
+            textarea,
+            button {
+                line-height: 40px;
+                align-items: center;
+                margin-left: 40%;
+                margin-right: 40%;
+                margin-top: 2%;
+                width: 40%;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="message.php" method="post">
+            <input type="text" name="name" id="name" placeholder="enter your first name"><br>
+            <input type="email" name="email" id="email" placeholder="enter your email"><br>
+            <input type="text" name="subject" id="subject"><br>
+            <textarea  name="message" id="message" placeholder="type your text here"></textarea><br>
+            <button id="btn">send</button>
+        </form>
+    </body>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', function(e){
+            e.preventDefault()
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+            var body = 'Your name is: '+name+'<br/> your email is: '+email+'<br/>'+subject+'<br/>'+message
+            Email.send({
+    Host : "smtp.gmail.com",
+    Username : "waswagodwin19@gmail.com",
+    Password : "paxqqklnagufrztr",
+    To : 'waswagodwin19@gmail.com.com',
+    From : email,
+    Subject : subject,
+    Body : body
+}).then(
+  message => alert(message)
+);
+        })
+    </script>
+</html>
